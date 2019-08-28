@@ -1,0 +1,7 @@
+C:\Users\Andrew Malkasian\Desktop\devCodeCamp\DevCodeCampWeek3\RockPaperScissors\bin\Debug\RockPaperScissors.exe.config
+C:\Users\Andrew Malkasian\Desktop\devCodeCamp\DevCodeCampWeek3\RockPaperScissors\bin\Debug\RockPaperScissors.exe
+C:\Users\Andrew Malkasian\Desktop\devCodeCamp\DevCodeCampWeek3\RockPaperScissors\bin\Debug\RockPaperScissors.pdb
+C:\Users\Andrew Malkasian\Desktop\devCodeCamp\DevCodeCampWeek3\RockPaperScissors\obj\Debug\RockPaperScissors.csprojAssemblyReference.cache
+C:\Users\Andrew Malkasian\Desktop\devCodeCamp\DevCodeCampWeek3\RockPaperScissors\obj\Debug\RockPaperScissors.csproj.CoreCompileInputs.cache
+C:\Users\Andrew Malkasian\Desktop\devCodeCamp\DevCodeCampWeek3\RockPaperScissors\obj\Debug\RockPaperScissors.exe
+C:\Users\Andrew Malkasian\Desktop\devCodeCamp\DevCodeCampWeek3\RockPaperScissors\obj\Debug\RockPaperScissors.pdb
