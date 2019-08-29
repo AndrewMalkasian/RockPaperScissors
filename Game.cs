@@ -8,109 +8,92 @@ namespace RockPaperScissors
 {
     class Game
     {
+        Player UserOne;
+        Player UserTwo;
+        
 
+        
 
-
-        string option1 = Rock;
-        string option2 = Roc
-
-
-        public void Gestures()
+        
+        // member methods
+        //RunGame (MASTER PROGRAM TO RULE THEM ALL)
+        //MainMenu
+        //Rules
+        //number of Players Options
+        //Their choice menu
+        //Their Result.
+      
+        public void RunGame()
         {
-            List<string> gestures = new List<string>() {"Rock", "Paper", "Scissors", "Lizard", "Spock" };
-
-
-
-
-            public void CallingRock()
-            {
-                if (Opponent.ChooseGesture() == gestures[2] || Opponent.ChooseGesture() == gestures[3]) // wins against Scissors and Lizard
-                {
-                  //ADD METHOD  PlayerWinTurn();
-                }
-                
-                else if (Opponent.ChooseGesture() == gestures[1] || Opponent.ChooseGesture() == gestures[1]) // loses against Paper and Spock
-                { 
-                    //ADD METHOD PlayerLoseTurn();
-                }
-                else (Opponent.ChooseGesture() == gestures[0]) // ties itself
-                {
-                    //ADD METHOD TieAndRepeat();
-                }
-
-            }
-
-            public void CallingPaper()
-            {
-                if (Opponent.ChooseGesture() == gestures[0] || Opponent.ChooseGesture() == gestures[5]) // wins against rock and Spock
-                {
-                   //ADD METHOD PlayerWinTurn();
-                }
-
-                else if (Opponent.ChooseGesture() == gestures[2] || Opponent.ChooseGesture() == gestures[3]) //loses against Scissors + Lizard
-                {
-                    //ADD METHOD PlayerLoseTurn
-                }
-
-                else (Opponent.ChooseGesture() == gestures[1]) // ties itself
-                {
-                    //ADD METHOD TieAndRepeat();
-                }
-            }
-
-            public void CallingScissors()
-            {
-                if (Opponent.ChooseGesture() == gestures[1] || Opponent.ChooseGesture() == gestures[3]) // wins against Paper and Lizard
-                {
-                   //ADD METHOD PlayerWinTurn();
-                }
-
-                else if (Opponent.ChooseGesture() == gestures[0] || Opponent.ChooseGesture() == gestures[4]) // loses against Rock and Spock
-                {
-                // ADD METHOD PlayerLoseTurn();
-                }
-                else (Opponent.ChooseGesture() == gestures[2]) // ties itself 
-                {
-                //ADD FUNCTION TieAndRepeat();
-                }
+            MainMenu();
 
 
         }
 
-        public void CallingLizard()
+        public void MainMenu()
+        {
+            Console.WriteLine("Would you like the rules or start the game? (1) Rules | (2) Game Start");
+            string userInput = Console.ReadLine();
+            if(userInput == "1")
             {
-                if (Opponent.ChooseGesture() == gestures[1] || Opponent.ChooseGesture() == gestures[4]) // wins against paper + Spock
-                {
-                  //ADD METHOD PlayerWinTurn();
-                }
-
-                else if (Opponent.ChooseGesture() == gestures[0] || Opponent.ChooseGesture() == gestures[2]) //loses against Rock + Scissors
-                {
-                // ADD METHOD PlayerLoseTurn()
-                }
-                else (Opponent.ChooseGesture() == gestures[3]) // ties itself 
-                {
-                //ADD METHOD TieAndRepeat();
+                Rules();
+            }
+            else if (userInput == "2")
+            {
+                HowManyPeopleArePlayingMenu();
             }
         }
 
-            public void CallingSpock()
+        public void Rules()
+        {
+            Console.WriteLine("");
+
+        }
+
+        public void HowManyPeopleArePlayingMenu()
+        {
+            
+            Console.WriteLine("How many Playas?");
+            string UserInput = Console.ReadLine();
+            if (UserInput == "1")
             {
-                if (Opponent.ChooseGesture() == gestures[0] || Opponent.ChooseGesture() == gestures[2]) // wins against Rock and Scissors
-                {
-                  //ADD METHOD  PlayerWinTurn();
-                }
+                Console.WriteLine("Hey Solo person, what's your name?");
+                Player UserOne = new HumanPlayer;
+                UserInput = Console.ReadLine();
+                UserOne.name = UserInput;
 
-                else if (Opponent.ChooseGesture() == gestures[1] || Opponent.ChooseGesture() == gestures[3]) // loses against Paper + Lizard
-                {
-                 //ADD METHOD PlayerWinTurn();
-                }
-                else (Opponent.ChooseGesture() == gestures[4]) // ties itself
-                {
-                //ADD METHOD TieAndRepeat();
+                Console.WriteLine("A new player has joined.");
+
+                Player UserTwo = new PlayerAI;
+                UserTwo.name = "T3000";
+
             }
+            else if (UserInput == "2")
+            {
+                Console.WriteLine("Two people, huh? what's your name?");
+                UserInput = Console.ReadLine();
+                UserOne.name = UserInput;
+
+                Console.WriteLine("That's great, " + UserOne.name + "What's your pal's name?");
+                UserInput = Console.ReadLine();
+                UserTwo.name = UserInput;
+
+            }
+            else
+            {
+                HowManyPeopleArePlayingMenu();
+            }
+           
         }
 
+        public void GestureMenu()
+        {
+            UserTwo.ChooseGesture(); // Will choose a random gesture
+            UserOne.ChooseGesture(); // Will judge against that gesture
+           
         }
+
+        
+        
     }
 }
