@@ -8,18 +8,21 @@ namespace RockPaperScissors
 {
     public class PlayerAI : Player
     {
-
+       
         public PlayerAI()
         {
-            this.name = name;
-            this.scoreCount = scoreCount;
+          
+
         }
 
         public override void ChooseGesture()
         {
-           //RANDOM-GESTURE
+            Random randomGesture = new Random();
+           List<string> RPSLS = new List<string>() { "Rock", "Paper", "Scissors", "Lizard", "Spock" };
 
-
+            var list = randomGesture.Next(1, 6);
+            Console.WriteLine("T3000 has randomly choosen " + RPSLS[list]);
+            
         }
     }
 }

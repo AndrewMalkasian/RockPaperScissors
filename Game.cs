@@ -8,8 +8,8 @@ namespace RockPaperScissors
 {
     class Game
     {
-        Player UserOne;
-        Player UserTwo;
+        Player PlayerOne;
+        Player PlayerTwo;
         
 
         
@@ -26,6 +26,7 @@ namespace RockPaperScissors
         public void RunGame()
         {
             MainMenu();
+            GestureMenu();
 
 
         }
@@ -58,25 +59,28 @@ namespace RockPaperScissors
             if (UserInput == "1")
             {
                 Console.WriteLine("Hey Solo person, what's your name?");
-                Player UserOne = new HumanPlayer;
-                UserInput = Console.ReadLine();
-                UserOne.name = UserInput;
+                 PlayerOne = new PlayerHuman();
+                PlayerOne.name = Console.ReadLine();
+                
 
-                Console.WriteLine("A new player has joined.");
+                Console.WriteLine("A new player has joined. T3000 is his name.");
 
-                Player UserTwo = new PlayerAI;
-                UserTwo.name = "T3000";
+                PlayerTwo = new PlayerAI();
+                PlayerTwo.name = "T3000";
 
             }
             else if (UserInput == "2")
             {
-                Console.WriteLine("Two people, huh? what's your name?");
-                UserInput = Console.ReadLine();
-                UserOne.name = UserInput;
+                PlayerOne = new PlayerHuman();
+     
+                Console.WriteLine("Two people, huh? what's YOUR name?");
+                PlayerOne.name = Console.ReadLine();
+                
 
-                Console.WriteLine("That's great, " + UserOne.name + "What's your pal's name?");
-                UserInput = Console.ReadLine();
-                UserTwo.name = UserInput;
+                PlayerTwo = new PlayerHuman();
+                Console.WriteLine("That's great, " + PlayerOne.name + "What's your pal's name?");
+                PlayerTwo.name = Console.ReadLine();
+               
 
             }
             else
@@ -88,9 +92,9 @@ namespace RockPaperScissors
 
         public void GestureMenu()
         {
-            UserTwo.ChooseGesture(); // Will choose a random gesture
-            UserOne.ChooseGesture(); // Will judge against that gesture
-           
+            PlayerOne.ChooseGesture();
+            PlayerTwo.ChooseGesture();
+
         }
 
         
