@@ -11,7 +11,8 @@ namespace RockPaperScissors
        
         public PlayerAI()
         {
-          
+
+            scoreCount = 0;
 
         }
 
@@ -20,7 +21,7 @@ namespace RockPaperScissors
             Random randomGesture = new Random();
            List<string> RPSLS = new List<string>() { "Rock", "Paper", "Scissors", "Lizard", "Spock" };
 
-            var list = randomGesture.Next(1, 6);
+            var list = randomGesture.Next(0, 5);
             Console.WriteLine("T3000 has randomly choosen " + RPSLS[list]);
             
         }

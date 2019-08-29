@@ -27,8 +27,11 @@ namespace RockPaperScissors
         public void RunGame()
         {
             MainMenu();
-            CompareGestures();
-
+            while(PlayerOne.scoreCount < 1 || PlayerTwo.scoreCount < 1)
+            {
+                CompareGestures();
+          
+            }    
 
         }
 
@@ -94,19 +97,49 @@ namespace RockPaperScissors
         public void CompareGestures()
         {
             PlayerOne.ChooseGesture();
-          
             PlayerTwo.ChooseGesture();
+
+            string p1 = PlayerOne.ChosenGesture;
+            string p2 = PlayerTwo.ChosenGesture;
+            Console.WriteLine(PlayerOne.name + " has choosen " + p1 +".");
+          
+            if (p1 == p2)
+            {
+                Console.WriteLine("You read each other's mind!! AGAIN!!");
+                Console.WriteLine(PlayerOne.scoreCount);
+                Console.WriteLine(PlayerTwo.scoreCount);
+                CompareGestures();
+
+            }
+            else if (p1 == "Rock"     && (p2 == "Scissors" || p2 == "Lizard")   ||
+                     p1 == "Paper"    && (p2 == "Rock"     || p2 == "Spock")    ||
+                     p1 == "Scissors" && (p2 == "Paper"    || p2 == "Lizard")   ||
+                     p1 == "Lizard"   && (p2 == "Paper"    || p2 == "Spock")    ||
+                     p1 == "Spock"    && (p2 == "Rock"     || p2 == "Scissors"))
+                    
+            {
+                Console.WriteLine(PlayerOne.name + " wins this rind... on to the next rind. Good Luck, PARENTER");
+                PlayerOne.scoreCount++;
+                Console.WriteLine(PlayerOne.scoreCount);
+                Console.WriteLine(PlayerTwo.scoreCount);
+                CompareGestures();
+
+
+            }
+            else
+            {
+                PlayerOne.scoreCount++;
+                Console.WriteLine(PlayerOne.scoreCount);
+                Console.WriteLine(PlayerTwo.scoreCount);
+                CompareGestures();
+
+            }
 
         }
 
-  
-
-
-     
-
         public void CallingRock()
         {
-            if (RPSLS[0] == RPSLS[2] || RPSLS[0] == RPSLS[3]) // wins against Scissors and Lizard
+            if (PlayerOne.ChosenGesture == PlayerTwo.RPSLS[2] || RPSLS[0] == RPSLS[3]) // wins against Scissors and Lizard
             {
                 PlayerOne.scoreCount++;
             }

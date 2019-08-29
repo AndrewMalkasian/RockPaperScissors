@@ -11,6 +11,7 @@ namespace RockPaperScissors
         public string name;
         public int scoreCount;
         public string UserInput;
+        public string ChosenGesture;
        
       public List<string> RPSLS = new List<string>() { "Rock", "Paper", "Scissors", "Lizard", "Spock" };
         

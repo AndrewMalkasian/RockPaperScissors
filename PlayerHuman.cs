@@ -12,6 +12,7 @@ namespace RockPaperScissors
         public PlayerHuman()
         {
 
+            scoreCount = 0;
             
            
         }
@@ -24,19 +25,24 @@ namespace RockPaperScissors
             switch (UserInput)
             { 
                 case "1":
-                    UserInput = RPSLS[0];     
+                    ChosenGesture = "Rock";
+                    Console.WriteLine("P1 has chosen Rock");
                     break;
                 case "2":
-                    UserInput = RPSLS[1];
+                    ChosenGesture = "Paper";
+                    Console.WriteLine("P1 has chosen Paper");
                     break;
                 case "3":
-                    UserInput = RPSLS[2];
+                    ChosenGesture = "Scissors";
+                    Console.WriteLine("P1 has chosen Scissors");
                     break;
                 case "4":
-                    UserInput = RPSLS[3];
+                    ChosenGesture = "Lizard";
+                    Console.WriteLine("P1 has chosen Lizard");
                     break;
                 case "5":
-                    UserInput = RPSLS[4];
+                    ChosenGesture = "Spock";
+                    Console.WriteLine("P1 has chosen Spock");
                     break;
                 default:
                     break;
