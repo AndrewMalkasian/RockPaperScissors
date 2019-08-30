@@ -26,23 +26,18 @@ namespace RockPaperScissors
             { 
                 case "1":
                     ChosenGesture = "Rock";
-                    Console.WriteLine("P1 has chosen Rock");
                     break;
                 case "2":
-                    ChosenGesture = "Paper";
-                    Console.WriteLine("P1 has chosen Paper");
+                    ChosenGesture = "Paper";                   
                     break;
                 case "3":
                     ChosenGesture = "Scissors";
-                    Console.WriteLine("P1 has chosen Scissors");
                     break;
                 case "4":
                     ChosenGesture = "Lizard";
-                    Console.WriteLine("P1 has chosen Lizard");
                     break;
                 case "5":
                     ChosenGesture = "Spock";
-                    Console.WriteLine("P1 has chosen Spock");
                     break;
                 default:
                     break;

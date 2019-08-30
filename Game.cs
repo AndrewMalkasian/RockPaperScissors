@@ -11,7 +11,7 @@ namespace RockPaperScissors
         Player PlayerOne;
         Player PlayerTwo;
         List<string> RPSLS = new List<string>() { "Rock", "Paper", "Scissors", "Lizard", "Spock" };
-
+        
 
 
 
@@ -27,11 +27,22 @@ namespace RockPaperScissors
         public void RunGame()
         {
             MainMenu();
-            while(PlayerOne.scoreCount < 1 || PlayerTwo.scoreCount < 1)
-            {
+
+            PlayerOne.scoreCount = 0;
+            PlayerTwo.scoreCount = 0;
+
+            while(PlayerOne.scoreCount < 2 && PlayerTwo.scoreCount < 2)
+            { 
                 CompareGestures();
-          
-            }    
+            }
+            if (PlayerOne.scoreCount >= 2 && PlayerOne.scoreCount >= 2)
+            {
+                GameWinner();
+            }
+            else
+            {
+               
+            }
 
         }
 
@@ -96,6 +107,7 @@ namespace RockPaperScissors
 
         public void CompareGestures()
         {
+           
             PlayerOne.ChooseGesture();
             PlayerTwo.ChooseGesture();
 
@@ -116,137 +128,34 @@ namespace RockPaperScissors
                      p1 == "Scissors" && (p2 == "Paper"    || p2 == "Lizard")   ||
                      p1 == "Lizard"   && (p2 == "Paper"    || p2 == "Spock")    ||
                      p1 == "Spock"    && (p2 == "Rock"     || p2 == "Scissors"))
-                    
             {
                 Console.WriteLine(PlayerOne.name + " wins this rind... on to the next rind. Good Luck, PARENTER");
                 PlayerOne.scoreCount++;
                 Console.WriteLine(PlayerOne.scoreCount);
                 Console.WriteLine(PlayerTwo.scoreCount);
-                CompareGestures();
-
-
             }
             else
             {
-                PlayerOne.scoreCount++;
+                PlayerTwo.scoreCount++;
                 Console.WriteLine(PlayerOne.scoreCount);
                 Console.WriteLine(PlayerTwo.scoreCount);
-                CompareGestures();
-
             }
 
         }
 
-        public void CallingRock()
+        public void GameWinner()
         {
-            if (PlayerOne.ChosenGesture == PlayerTwo.RPSLS[2] || RPSLS[0] == RPSLS[3]) // wins against Scissors and Lizard
+            Console.WriteLine("You won. Would you like to play again? (y) | (n)");
+           string UserInput = Console.ReadLine();
+            if (UserInput == "y")
             {
-                PlayerOne.scoreCount++;
-            }
-
-            else if (RPSLS[0] == RPSLS[1] || RPSLS[0] == RPSLS[1]) // loses against Paper and Spock
-            {
-                PlayerTwo.scoreCount++;
-            }
-            else if (RPSLS[0] == RPSLS[0]) // ties itself
-            {
-                CompareGestures();
+                MainMenu();
             }
             else
             {
-                CompareGestures();
-            }
-
-        }
-
-        public void CallingPaper()
-        {
-            if (RPSLS[1] == RPSLS[0] || RPSLS[1] == RPSLS[5]) // wins against rock and Spock
-            {
-                PlayerOne.scoreCount++;
-            }
-
-            else if (RPSLS[1] == RPSLS[2] || RPSLS[1] == RPSLS[3]) //loses against Scissors + Lizard
-            {
-                PlayerTwo.scoreCount++;
-            }
-
-            else if (RPSLS[1] == RPSLS[1]) // ties itself
-            {
-                CompareGestures();
-
-            }
-            else
-            {
-                CompareGestures();
-
-            }
-
-        }
-        public void CallingScissors()
-        {
-            // PlayerTwo.ChooseGesture()
-            if (RPSLS[2] == RPSLS[1] || RPSLS[2] == RPSLS[3]) // wins against Paper and Lizard
-            {
-                PlayerOne.scoreCount++;
-            }
-
-            else if (RPSLS[2] == RPSLS[0] || RPSLS[2] == RPSLS[4]) // loses against Rock and Spock
-            {
-                PlayerTwo.scoreCount++;
-            }
-            else if (RPSLS[2] == RPSLS[2]) // ties itself 
-            {
-                CompareGestures();
-            }
-            else
-            {
-                CompareGestures();
-            }
-
-        }
-
-        public void CallingLizard()
-        {
-            if (RPSLS[3] == RPSLS[1] || RPSLS[3] == RPSLS[4]) // wins against paper + Spock
-            {
-                PlayerOne.scoreCount++;
-            }
-
-            else if (RPSLS[3] == RPSLS[0] || RPSLS[3] == RPSLS[2]) //loses against Rock + Scissors
-            {
-                PlayerTwo.scoreCount++;
-            }
-            else if (RPSLS[3] == RPSLS[3]) // ties itself 
-            {
-                CompareGestures();
-            }
-            else
-            {
-                CompareGestures();
+                Console.WriteLine("Thank you, come again!");
             }
         }
 
-
-        public void CallingSpock()
-        {
-            if (RPSLS[4] == RPSLS[0] || RPSLS[4] == RPSLS[2]) // wins against Rock and Scissors
-            {
-                PlayerOne.scoreCount++;
-            }
-
-            else if (RPSLS[4] == RPSLS[1] || RPSLS[4] == RPSLS[3]) // loses against Paper + Lizard
-            {
-                PlayerTwo.scoreCount++;
-            }
-            else if (RPSLS[4] == RPSLS[4]) // ties itself
-            {
-                CompareGestures();
-            }
-            else
-            {
-                CompareGestures();
-            }
-        }
     }
 }
