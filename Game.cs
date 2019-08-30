@@ -22,27 +22,28 @@ namespace RockPaperScissors
         //Rules
         //number of Players Options
         //Their choice menu
-        //Their Result.
+        //Their Result.1
+
 
         public void RunGame()
         {
             MainMenu();
 
-            PlayerOne.scoreCount = 0;
-            PlayerTwo.scoreCount = 0;
-
-            while(PlayerOne.scoreCount < 2 && PlayerTwo.scoreCount < 2)
-            { 
-                CompareGestures();
-            }
-            if (PlayerOne.scoreCount >= 2 && PlayerOne.scoreCount >= 2)
-            {
+         //make a variable for # of rounds
+            while(true)
+                if(PlayerOne.scoreCount >= 2 || PlayerTwo.scoreCount >= 2)
+                {
                 GameWinner();
-            }
-            else
-            {
+                }
+                else if (PlayerOne.scoreCount < 2 || PlayerOne.scoreCount < 2)
+                {
                
-            }
+                CompareGestures();
+                }
+                else
+                {
+                    break;
+                }
 
         }
 
@@ -59,12 +60,40 @@ namespace RockPaperScissors
                 HowManyPeopleArePlayingMenu();
             }
         }
-
         public void Rules()
         {
-            Console.WriteLine("");
+            Console.WriteLine("RULES TO RPSLS: ROCK, PAPER, SCISSORS, LIZARD, SPOCK");
+            Console.WriteLine("----------------------------------------------------");
+            Console.WriteLine("WIN CONDITION: In a best of three match, crush the spirit of your opponent by flailing your hand effortlessly towards them synchronously!");
+            Console.WriteLine("SCORING: ");
+            Console.WriteLine("Get a point by craftily manipulating your hand: ");
+            Console.WriteLine("ROCK    BEATS: Scissors and  Lizards   |  ROCK     LOSES: Spock    and  Paper.  ");
+            Console.WriteLine("PAPER   BEATS: Rock     and  Spock     |  PAPER    LOSES: Scissors and  Lizard. ");
+            Console.WriteLine("SCISSOR BEATS: Paper    and  Lizards   |  SCISSORS LOSES: Rock     and  Spock   ");
+            Console.WriteLine("LIZARD  BEATS: Paper    and  Spock     |  LIZARD   LOSES: Rock     and  Scissors");
+            Console.WriteLine("SPOCK   BEATS: Rock     and  scissors  |  SPOCK    LOSES: Paper    and  Lizard  ");
+            Console.WriteLine("Return to the main menu? (1) | Support my grade by playing my game. (2) | Hear the rules again (3)");
+           string UserInput = Console.ReadLine();
+            if (UserInput == "1" || UserInput == "2")
+            {
+                HowManyPeopleArePlayingMenu();
 
+            }            
+            else if(UserInput == "3")
+
+                Console.WriteLine("You already read the rules...");
+                HowManyPeopleArePlayingMenu();
+ 
         }
+
+
+
+
+
+
+
+ 
+
 
         public void HowManyPeopleArePlayingMenu()
         {
@@ -113,32 +142,33 @@ namespace RockPaperScissors
 
             string p1 = PlayerOne.ChosenGesture;
             string p2 = PlayerTwo.ChosenGesture;
-            Console.WriteLine(PlayerOne.name + " has choosen " + p1 +".");
-          
+            
             if (p1 == p2)
             {
-                Console.WriteLine("You read each other's mind!! AGAIN!!");
-                Console.WriteLine(PlayerOne.scoreCount);
-                Console.WriteLine(PlayerTwo.scoreCount);
-                CompareGestures();
+                Console.WriteLine($"{PlayerOne.name} and {PlayerTwo.name} have both chosen {p1}");
+                Console.WriteLine($"{PlayerOne.name} : {PlayerOne.scoreCount}");
+                Console.WriteLine($"{PlayerTwo.name} : {PlayerTwo.scoreCount}");
+               
 
             }
-            else if (p1 == "Rock"     && (p2 == "Scissors" || p2 == "Lizard")   ||
-                     p1 == "Paper"    && (p2 == "Rock"     || p2 == "Spock")    ||
-                     p1 == "Scissors" && (p2 == "Paper"    || p2 == "Lizard")   ||
-                     p1 == "Lizard"   && (p2 == "Paper"    || p2 == "Spock")    ||
-                     p1 == "Spock"    && (p2 == "Rock"     || p2 == "Scissors"))
+            else if (p1 == "Rock"     && (p2 == "Scissors" ||  p2 == "Lizard")    ||
+                     p1 == "Paper"    && (p2 == "Rock"     ||  p2 == "Spock")     ||
+                     p1 == "Scissors" && (p2 == "Paper"    ||  p2 == "Lizard")    ||
+                     p1 == "Lizard"   && (p2 == "Paper"    ||  p2 == "Spock")     ||
+                     p1 == "Spock"    && (p2 == "Rock"     ||  p2 == "Scissors"))
             {
-                Console.WriteLine(PlayerOne.name + " wins this rind... on to the next rind. Good Luck, PARENTER");
+                Console.WriteLine($"{PlayerOne.name}   wins this round...");
                 PlayerOne.scoreCount++;
-                Console.WriteLine(PlayerOne.scoreCount);
-                Console.WriteLine(PlayerTwo.scoreCount);
+                Console.WriteLine($"{PlayerOne.name} : {PlayerOne.scoreCount}");
+                Console.WriteLine($"{PlayerTwo.name} : {PlayerTwo.scoreCount}");
             }
             else
             {
+                Console.WriteLine($"{PlayerOne.name}   wins this round...");
                 PlayerTwo.scoreCount++;
-                Console.WriteLine(PlayerOne.scoreCount);
-                Console.WriteLine(PlayerTwo.scoreCount);
+                Console.WriteLine($"{PlayerOne.name} : {PlayerOne.scoreCount}");
+                Console.WriteLine($"{PlayerTwo.name} : {PlayerTwo.scoreCount}");
+
             }
 
         }
