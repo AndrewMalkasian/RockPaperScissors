@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace RockPaperScissors
 {
-    class Exceptions
+    public class Exceptions
     {
-
+        public string UserInput;
         public Exceptions()
         {
 
@@ -16,8 +16,14 @@ namespace RockPaperScissors
 
         }
 
-        public void UserInputNull()
+        public void UserInputValidation()
         {
+            if(UserInput == null)
+            { 
+                Console.WriteLine("Wrong Input. Try again.");
+
+            }
+
 
         }
 

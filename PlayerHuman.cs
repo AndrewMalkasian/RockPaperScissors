@@ -40,7 +40,9 @@ namespace RockPaperScissors
                     ChosenGesture = "Spock";
                     break;
                 default:
-                    break;
+                    Console.WriteLine("You throw your hand out but it fails...");
+                   ChooseGesture(); 
+                   break;
             }
 
 

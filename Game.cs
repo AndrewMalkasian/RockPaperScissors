@@ -31,14 +31,14 @@ namespace RockPaperScissors
 
          //make a variable for # of rounds
             while(true)
-                if(PlayerOne.scoreCount >= 2 || PlayerTwo.scoreCount >= 2)
+                if(PlayerOne.scoreCount == 2 || PlayerTwo.scoreCount == 2)
                 {
-                GameWinner();
+                    GameWinner();
                 }
                 else if (PlayerOne.scoreCount < 2 || PlayerOne.scoreCount < 2)
                 {
                
-                CompareGestures();
+                    CompareGestures();
                 }
                 else
                 {
@@ -51,13 +51,18 @@ namespace RockPaperScissors
         {
             Console.WriteLine("Would you like the rules or start the game? (1) Rules | (2) Game Start");
             string userInput = Console.ReadLine();
-            if(userInput == "1")
+            if (userInput == "1")
             {
                 Rules();
             }
             else if (userInput == "2")
             {
                 HowManyPeopleArePlayingMenu();
+            }
+            else
+            {
+                Console.WriteLine("Please enter the requested value");
+                MainMenu();
             }
         }
         public void Rules()
@@ -76,13 +81,22 @@ namespace RockPaperScissors
            string UserInput = Console.ReadLine();
             if (UserInput == "1" || UserInput == "2")
             {
+                Console.WriteLine("Time is a most precious commodity...");
                 HowManyPeopleArePlayingMenu();
 
             }            
             else if(UserInput == "3")
-
+            {
                 Console.WriteLine("You already read the rules...");
                 HowManyPeopleArePlayingMenu();
+
+            }
+            else
+            {
+                Console.WriteLine("You decided to enter the wrong value. You will now start the game.");
+                HowManyPeopleArePlayingMenu();
+
+            }
  
         }
 
@@ -98,16 +112,24 @@ namespace RockPaperScissors
         public void HowManyPeopleArePlayingMenu()
         {
             
-            Console.WriteLine("How many Playas?");
+            Console.WriteLine("How many humans will be playing this game? (0), (1) or (2)?");
             string UserInput = Console.ReadLine();
-            if (UserInput == "1")
+            if(UserInput == "0")
+            {
+                PlayerOne = new PlayerAI();
+                PlayerOne.name = "T3000";
+
+                PlayerTwo = new PlayerAI();
+                PlayerTwo.name = "Someone Else";
+            }
+            else if (UserInput == "1")
             {
                 Console.WriteLine("Hey Solo person, what's your name?");
                  PlayerOne = new PlayerHuman();
                 PlayerOne.name = Console.ReadLine();
                 
 
-                Console.WriteLine("A new player has joined. T3000 is his name.");
+                Console.WriteLine("T3000 has joined.");
 
                 PlayerTwo = new PlayerAI();
                 PlayerTwo.name = "T3000";
@@ -122,7 +144,7 @@ namespace RockPaperScissors
                 
 
                 PlayerTwo = new PlayerHuman();
-                Console.WriteLine("That's great, " + PlayerOne.name + "What's your pal's name?");
+                Console.WriteLine("That's great, " + PlayerOne.name + " what's your pal's name?");
                 PlayerTwo.name = Console.ReadLine();
                
 
@@ -138,14 +160,18 @@ namespace RockPaperScissors
         {
            
             PlayerOne.ChooseGesture();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
             PlayerTwo.ChooseGesture();
 
-            string p1 = PlayerOne.ChosenGesture;
+            string p1 = PlayerOne.ChosenGesture; ;l
             string p2 = PlayerTwo.ChosenGesture;
             
             if (p1 == p2)
             {
                 Console.WriteLine($"{PlayerOne.name} and {PlayerTwo.name} have both chosen {p1}");
+                Console.WriteLine("It's a tie!!");
                 Console.WriteLine($"{PlayerOne.name} : {PlayerOne.scoreCount}");
                 Console.WriteLine($"{PlayerTwo.name} : {PlayerTwo.scoreCount}");
                
@@ -157,15 +183,28 @@ namespace RockPaperScissors
                      p1 == "Lizard"   && (p2 == "Paper"    ||  p2 == "Spock")     ||
                      p1 == "Spock"    && (p2 == "Rock"     ||  p2 == "Scissors"))
             {
-                Console.WriteLine($"{PlayerOne.name}   wins this round...");
+               
+                Console.WriteLine($"{PlayerOne.name}: {PlayerOne.ChosenGesture}");
+                Console.WriteLine($"{PlayerTwo.name}: {PlayerTwo.ChosenGesture}");
+                //
                 PlayerOne.scoreCount++;
+                //
+                Console.WriteLine($"{PlayerOne.name}'s {PlayerOne.ChosenGesture} beats {PlayerTwo.name}'s {PlayerTwo.ChosenGesture}. {PlayerOne.name} wins this round...");
+
                 Console.WriteLine($"{PlayerOne.name} : {PlayerOne.scoreCount}");
                 Console.WriteLine($"{PlayerTwo.name} : {PlayerTwo.scoreCount}");
             }
             else
             {
-                Console.WriteLine($"{PlayerOne.name}   wins this round...");
+
+                Console.WriteLine($"{PlayerOne.name}: {PlayerOne.ChosenGesture}");
+                Console.WriteLine($"{PlayerTwo.name}: {PlayerTwo.ChosenGesture}");
+               
+                //
                 PlayerTwo.scoreCount++;
+                //
+                Console.WriteLine($"{PlayerTwo.name}'s {PlayerTwo.ChosenGesture} beats {PlayerOne.name}'s {PlayerOne.ChosenGesture}. {PlayerTwo.name} wins this round...");
+
                 Console.WriteLine($"{PlayerOne.name} : {PlayerOne.scoreCount}");
                 Console.WriteLine($"{PlayerTwo.name} : {PlayerTwo.scoreCount}");
 
@@ -175,8 +214,21 @@ namespace RockPaperScissors
 
         public void GameWinner()
         {
-            Console.WriteLine("You won. Would you like to play again? (y) | (n)");
-           string UserInput = Console.ReadLine();
+            if (PlayerOne.scoreCount == 2)
+            {
+                Console.WriteLine($"{ PlayerOne.name} won. Would you like to play again? (y) | (n)");
+                string UserInput = Console.ReadLine();
+
+            }
+
+            else if (PlayerTwo.scoreCount == 2)
+            {
+                Console.WriteLine($"{ PlayerOne.name} won. Would you like to play again? (y) | (n)");
+                string UserInput = Console.ReadLine();
+            }
+
+           
+
             if (UserInput == "y")
             {
                 MainMenu();
